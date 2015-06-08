@@ -1,0 +1,39 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath('org.springframework.boot:spring-boot-gradle-plugin:1.2.2.RELEASE')
+    }
+}
+
+apply plugin: 'java'
+sourceCompatibility = 1.8
+version = '1.0'
+
+apply plugin: 'spring-boot'
+apply plugin: 'idea'
+apply plugin: 'jacoco'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // core Spring Boot starter, including auto-configuration support, logging and YAML
+    compile ('org.springframework.boot:spring-boot-starter')
+    compile ('org.springframework.boot:spring-boot-starter-web')
+    compile ('org.springframework.boot:spring-boot-starter-actuator')
+    compile ('org.springframework.boot:spring-boot-starter-security')
+    compile ('org.springframework.security.oauth:spring-security-oauth2:2.0.7.RELEASE')
+    compile ('org.springframework.boot:spring-boot-starter-test')
+
+    testCompile 'com.jayway.jsonpath:json-path'
+    testCompile 'com.jayway.restassured:rest-assured:2.4.1'
+    testCompile 'junit:junit'
+}
+
+task wrapper (type: Wrapper) {
+    gradleVersion = '2.4'
+}
+
